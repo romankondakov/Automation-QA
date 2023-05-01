@@ -22,7 +22,7 @@ public class Main {
                 }
             }
 
-            System.out.println("Selected size: " + size);
+            System.out.println("Selected size: " + size + "eeee");
             System.out.println("Abbreviation: " + size.getAbbreviation());
             System.out.println("Width: " + size.getWidth());
             System.out.println("Length: " + size.getLength());
