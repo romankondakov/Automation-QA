@@ -15,7 +15,7 @@ public class HW_Find_Teachers extends BaseClass {
     By courseFront = By.xpath("//*[@id='categories']/div[3]/div/ul/li[1]/div/div[1]/ul/li[1]/a/div[2]");
 
 
-    ;
+
 
     @BeforeClass
     public static void first() {
@@ -33,15 +33,10 @@ public class HW_Find_Teachers extends BaseClass {
     public void mainPage() {
         driver.findElement(coursePrograming).click();
         driver.findElement(courseFront).click();
-        List<WebElement> teachersContainer = (List<WebElement>) driver.findElement(By.xpath("//li[@class='coach-list_item]"));
+        List<WebElement> teachersContainer = (List<WebElement>) driver.findElements(By.xpath("//li[@class='coach-list_item]"));
         System.out.println("Teachers List:");
         for (WebElement teacher : teachersContainer) {
             System.out.println(teacher.findElement(By.className("coach-card_name")));
-    }
-
-//    @Test
-//    public void teachersList() {
-//
-//        }
+         }
     }
 }
