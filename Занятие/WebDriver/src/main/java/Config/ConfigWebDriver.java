@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.time.Duration;
+
 public class ConfigWebDriver {
 
    static WebDriver driver = null;
@@ -25,6 +27,7 @@ public class ConfigWebDriver {
         options.addArguments("--incognito");
         driver = new ChromeDriver(options);
         driver.get("https://dnipro.ithillel.ua/");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
     }
 
     private static void createChrome() {
