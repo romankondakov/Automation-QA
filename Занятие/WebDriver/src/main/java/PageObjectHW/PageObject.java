@@ -1,9 +1,11 @@
 package PageObjectHW;
 
+import Util.Util;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PageObject {
@@ -12,11 +14,11 @@ public class PageObject {
 
         private final WebDriver driver;
 
-        private final By courseTitle=By.xpath("//div[@class=\"course-descriptor_title\"]//span[@class=\"course-descriptor_header-text\"]");
-        private final By CourseRate=By.xpath("//div[@class=\"course-descriptor_rating\"]//span[@class=\"course-rating_average\"]");
-        private final By CourseDescription=By.xpath("//div[@class=\"introduction-info_content introduction-info-redactor\"]");
+        By courseTitle = By.xpath("//div[@class=\"course-descriptor_title\"]//span[@class=\"course-descriptor_header-text\"]");By courseRate = By.xpath("//div[@class=\"course-descriptor_rating\"]//span[@class=\"course-rating_average\"]");By courseDescription = By.xpath("//div[@class=\"introduction-info_content introduction-info-redactor\"]");
+        By coachesShowAllButton= By.id("coachesShowAllButton");
+        By coachListItem=By.className("coach-list_item");
+        By coachName=By.className("coach-card_name");
 
-        private final By ListCoachesName=By.xpath("//div[@class=\"coaches\"]//ul[@class=\"coach-list coaches_list\"]");
         public MainPageObject(WebDriver driver) {
             this.driver = driver;
         }
@@ -24,16 +26,26 @@ public class PageObject {
         public WebElement getCourseTitle() {
             return driver.findElement(courseTitle);
         }
-        public WebElement getCourseRate(){
-            return driver.findElement(CourseRate);
+
+        public WebElement getCourseRate() {
+
+            return driver.findElement(courseRate);
         }
 
         public WebElement getCourseDescription() {
-            return driver.findElement(CourseDescription);
+
+            return driver.findElement(courseDescription);
         }
 
-        public List<WebElement> ListCoachesName(){
-            return (List<WebElement>) driver.findElement(ListCoachesName);
+        public List<String> getCoachNamesList(){
+            Util.scrollToElementVisibilityOf(driver,coachesShowAllButton);
+            driver.findElement(coachesShowAllButton).click();
+            List<String> namesList = new ArrayList<>();
+            for (WebElement element : driver.findElements(coachListItem)) {
+                namesList.add(element.findElement(coachName).getText());
+            }
+
+            return namesList;
         }
     }
 }
