@@ -29,4 +29,4 @@ public class Step extends BaseClass {
     public void checkValidation(String expected) throws Exception {
         Assert.assertEquals(Boolean.valueOf(expected),certificatePage.validationCertificate());
     }
-}
+
