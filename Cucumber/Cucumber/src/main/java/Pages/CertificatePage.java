@@ -46,6 +46,6 @@ public class CertificatePage {
                 throw new Exception("Fail");
             }
         }
-        return result
+        return result;
     }
 }

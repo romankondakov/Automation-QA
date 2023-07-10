@@ -10,8 +10,9 @@ import org.junit.Assert;
 public class Step extends BaseClass {
     static final String certificateURL = "https://certificate.ithillel.ua/";
     CertificatePage certificatePage = new CertificatePage(driver);
+
     static {
-        if (driver==null){
+        if (driver == null) {
             BaseClass.beforeClass();
         }
     }
@@ -20,6 +21,7 @@ public class Step extends BaseClass {
     public void openCertificatePage() {
         driver.get(certificateURL);
     }
+
     @When("I send number {string}")
     public void iSendNumber(String certifNumber) {
         certificatePage.sendCertificate(certifNumber);
@@ -27,6 +29,6 @@ public class Step extends BaseClass {
 
     @Then("check validation {string}")
     public void checkValidation(String expected) throws Exception {
-        Assert.assertEquals(Boolean.valueOf(expected),certificatePage.validationCertificate());
+        Assert.assertEquals(Boolean.valueOf(expected), certificatePage.validationCertificate());
     }
-
+}

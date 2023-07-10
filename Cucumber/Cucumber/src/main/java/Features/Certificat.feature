@@ -13,7 +13,7 @@ Feature: check validation Certificate
 
 
   @Precondition
-  Scenario Outline
+  Scenario Outline:
     When I send number "<Certificate>"
     Then check validation "<Expected>"
     Examples:
